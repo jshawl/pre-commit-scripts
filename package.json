@@ -1,0 +1,23 @@
+{
+  "name": "git-hooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "format:check": "prettier --check src/**/*.ts"
+  },
+  "keywords": [],
+  "author": "Jesse Shawl",
+  "license": "ISC",
+  "dependencies": {
+    "@jshawl/tsconfig": "^1.0.0",
+    "ora": "^4.0.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.0",
+    "typescript": "^3.9.3"
+  }
+}
