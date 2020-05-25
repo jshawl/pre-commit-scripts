@@ -1,17 +1,19 @@
 {
   "name": "@jshawl/git-hooks-test",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Pre-commit hook for npm projects",
   "main": "index.js",
   "files": [
     "post-install.sh",
     "post-uninstall.sh",
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "postinstall": "./post-install.sh",
     "postuninstall": "./post-uninstall.sh",
-    "prepublish": "rm -rf dist/ && npm run build",
+    "prepare": "rm -rf dist/ && npm run build",
     "build": "tsc --build tsconfig.json",
     "test": "jest",
     "format": "prettier --write src/**/*.ts",
@@ -24,7 +26,7 @@
   },
   "keywords": [],
   "author": "Jesse Shawl",
-  "license": "GPLv3",
+  "license": "GPL-3.0-only",
   "dependencies": {
     "ora": "^4.0.4"
   },

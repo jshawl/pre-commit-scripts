@@ -56,7 +56,7 @@ doAll(
   (): void => {
     console.log("ok");
   },
-  () => {
+  (): void => {
     console.log("Refusing to commit. Fix and stage changes and try again.");
     console.log("or run `!! --no-verify` to skip these checks");
     process.exit(1);
