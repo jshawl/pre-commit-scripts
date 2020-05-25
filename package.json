@@ -1,11 +1,12 @@
 {
   "name": "@jshawl/pre-commit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Pre-commit guards",
   "main": "dist/index.js",
   "files": [
     "post-install.sh",
     "post-uninstall.sh",
+    ".pre-commit-scripts",
     "LICENSE",
     "README.md"
   ],
