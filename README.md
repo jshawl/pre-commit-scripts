@@ -4,12 +4,28 @@ This npm package generates a git `pre-commit` hook that runs a set of bash comma
 
 ## Philosophy
 
-### No package.json changes
+### Private by default
 
-Local commits are a very personal activity. Your own commit guards don't _need_ to be shared with other contributors to your repository. To share changes with others:
+Local commits are a very personal activity. Your own commit guards don't _need_ to be shared with other contributors to your repository.
+
+By default, `.pre-commit-scripts` is added to `.git/info/exclude`
+
+To share changes with others:
 
 - add `pre-commit-scripts` as a `devDependency`
 - remove `.pre-commit-scripts` from `.git/info/exclude`
+
+### Index safe by default
+
+No changes are ever applied to the staging area programmatically.
+
+The general workflow is:
+
+1. Try to commit
+2. See commit guard errors
+3. Fix errors
+4. Stage changes
+5. Try to commit (and succeed this time)
 
 ### Not npm specific
 
@@ -24,25 +40,13 @@ npm run lint
 ! git diff --staged | grep console.log # prevent accidentally sharing debug statements
 ```
 
-### Index safe by default
-
-No changes are ever applied to the staging area programmatically.
-
-The general workflow is:
-
-1. Try to commit
-2. See commit guard errors
-3. Fix errors
-4. Stage changes
-5. Try to commit (and succeed this time)
-
 ## Installation
 
 ```
 npm install pre-commit-scripts --no-save
 ```
 
-A post-install script will copy a `pre-commit` executable to `.git/hooks/pre-commit`.
+A post-install script will copy a `pre-commit` executable to `.git/hooks/pre-commit` and ignore a local `.pre-commit-scripts` file.
 
 ## Usage
 
@@ -55,9 +59,8 @@ commit. You can skip the pre-commit hook by adding the `--no-verify` to a `git c
 
 ## Configuration
 
-It's possible to override the default commands.
 
-Create a `.pre-commit-scripts` file like this one:
+A `.pre-commit-scripts` file like this one is created automatically:
 
 ```
 npm run format:check
@@ -66,13 +69,7 @@ npm run lint
 npm run build
 ```
 
-in your repository's root directory, and list whichever commands you want to `exit 0` before allowing a commit.
-
-Optionally, consider ignoring this file so other contributors to the repository don't have to follow your own commit rules:
-
-```
-echo .pre-commit-scripts >> .git/info/exclude
-```
+in your repository's root directory.
 
 ## Uninstall
 
