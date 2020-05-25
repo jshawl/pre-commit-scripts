@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { existsSync, readFileSync } from "fs";
-import { exec, ExecException } from "child_process";
+import { exec } from "child_process";
 import ORA from "ora";
 
 const spinner = ORA();
@@ -21,32 +21,20 @@ if (existsSync(".pre-commit-scripts")) {
   ];
 }
 
-const pc = {
-  package: () => JSON.parse(readFileSync("./package.json", "utf-8")),
-  exec: (string: string, callback: (err: Error | null) => void) => {
-    spinner.start(`Running ${string}`);
-    exec(string, {}, (err: ExecException | null) => {
-      if (err) {
-        spinner.fail(string);
-        callback(err);
-      } else {
-        spinner.succeed(string);
-        callback(err);
-      }
-    });
-  },
-};
-
 const doAll = (
   fns: string[],
   done: () => void,
   fail: () => void,
   anyErrors = false
 ): void => {
-  const fn = fns.shift();
-  pc.exec(fn as string, (err: Error | null) => {
+  const fn = fns.shift() as string;
+  spinner.start(`Running ${fn}`);
+  exec(fn, {}, (err: Error | null) => {
     if (err) {
+      spinner.fail(fn);
       anyErrors = true;
+    } else {
+      spinner.succeed(fn);
     }
     if (fns.length) {
       doAll(fns, done, fail, anyErrors);

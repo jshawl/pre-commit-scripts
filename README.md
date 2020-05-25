@@ -21,6 +21,18 @@ npm run lint
 ! git diff --staged | grep console.log # prevent accidentally sharing debug statements
 ```
 
+### Index safe by default
+
+No changes are ever applied to the staging area programmatically.
+
+The general workflow is:
+
+1. Try to commit
+2. See commit guard errors
+3. Fix errors
+4. Stage changes
+5. Try to commit (and succeed this time)
+
 ## Install
 
 ```
