@@ -54,7 +54,7 @@ const doAll = (
 doAll(
   scripts,
   (): void => {
-    console.log("ok");
+    process.exit(0);
   },
   (): void => {
     console.log("Refusing to commit. Fix and stage changes and try again.");
