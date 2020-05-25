@@ -9,7 +9,7 @@ This npm package generates a git `pre-commit` hook that runs a set of bash comma
 Local commits are a very personal activity. Your own commit guards don't _need_ to be shared with other contributors to your repository. To share changes with others:
 
 - add `pre-commit-scripts` as a `devDependency`
-- remove  `.pre-commit-scripts` from `.git/info/exclude`
+- remove `.pre-commit-scripts` from `.git/info/exclude`
 
 ### Not npm specific
 
@@ -36,10 +36,10 @@ The general workflow is:
 4. Stage changes
 5. Try to commit (and succeed this time)
 
-## Install
+## Installation
 
 ```
-npm install pre-commit-scripts
+npm install pre-commit-scripts --no-save
 ```
 
 A post-install script will copy a `pre-commit` executable to `.git/hooks/pre-commit`.
@@ -77,7 +77,7 @@ echo .pre-commit-scripts >> .git/info/exclude
 ## Uninstall
 
 ```
-npm uninstall @jshawl/pre-commit
+npm uninstall pre-commit-scripts
 ```
 
 or just remove the pre-commit hook:
