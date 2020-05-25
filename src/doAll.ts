@@ -2,12 +2,12 @@ import { pc } from "./pre-commit";
 
 export const doAll = (
   fns: string[],
-  done: Function,
-  fail: Function,
+  done: () => void,
+  fail: () => void,
   anyErrors = false
-) => {
+): void => {
   const fn = fns.shift();
-  pc.exec(fn as string, (err: Error, stderr: string, stdout: string) => {
+  pc.exec(fn as string, (err: Error | null) => {
     if (err) {
       anyErrors = true;
     }

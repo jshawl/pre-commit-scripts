@@ -1,18 +1,19 @@
 import { readFileSync } from "fs";
-const child_process = require("child_process");
-const ora = require("ora");
-const spinner = ora("Loading unicorns");
+import { exec, ExecException } from "child_process";
+import ORA from "ora";
+
+const spinner = ORA();
 const pc = {
   package: () => JSON.parse(readFileSync("./package.json", "utf-8")),
-  exec: (string: string, callback: Function) => {
+  exec: (string: string, callback: (err: Error | null) => void) => {
     spinner.start(`Running ${string}`);
-    child_process.exec(string, (err: Error, stdout: string, stderr: string) => {
+    exec(string, {}, (err: ExecException | null) => {
       if (err) {
         spinner.fail(string);
-        callback(err, stdout);
+        callback(err);
       } else {
         spinner.succeed(string);
-        callback(err, stdout);
+        callback(err);
       }
     });
   }

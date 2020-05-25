@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --build tsconfig.json",
     "test": "jest",
     "format": "prettier --write src/**/*.ts",
     "format:check": "prettier --check src/**/*.ts",
