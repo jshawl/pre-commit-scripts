@@ -1,17 +1,26 @@
 #!/usr/bin/env node
 
-const scripts = [
-  "npm run format:check",
-  "npm run format",
-  "npm run lint",
-  "npm run build",
-];
-
-import { readFileSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import { exec, ExecException } from "child_process";
 import ORA from "ora";
 
 const spinner = ORA();
+console.log("Running .git/hooks/pre-commit");
+let scripts: string[];
+if (existsSync(".pre-commit-scripts")) {
+  console.log("Using ./.pre-commit-scripts");
+  scripts = readFileSync(".pre-commit-scripts", "utf8")
+    .split("\n")
+    .filter(String);
+} else {
+  scripts = [
+    "npm run format:check",
+    "npm run format",
+    "npm run lint",
+    "npm run build",
+  ];
+}
+
 const pc = {
   package: () => JSON.parse(readFileSync("./package.json", "utf-8")),
   exec: (string: string, callback: (err: Error | null) => void) => {

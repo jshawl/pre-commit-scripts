@@ -1,7 +1,7 @@
 {
   "name": "@jshawl/pre-commit",
-  "version": "0.0.3",
-  "description": "Pre-commit hook for npm projects",
+  "version": "0.0.10",
+  "description": "Pre-commit guards",
   "main": "dist/index.js",
   "files": [
     "post-install.sh",
@@ -23,10 +23,14 @@
     "type": "git",
     "url": "https://git.sr.ht/~jshawl/pre-commit"
   },
-  "keywords": [],
+  "keywords": [
+    "git",
+    "pre-commit hook"
+  ],
   "author": "Jesse Shawl",
   "license": "GPL-3.0-only",
   "dependencies": {
+    "@jshawl/pre-commit": "0.0.4",
     "ora": "^4.0.4"
   },
   "devDependencies": {
