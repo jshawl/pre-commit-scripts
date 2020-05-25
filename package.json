@@ -1,12 +1,11 @@
 {
   "name": "@jshawl/pre-commit",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Pre-commit hook for npm projects",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
     "post-install.sh",
     "post-uninstall.sh",
-    "dist",
     "LICENSE",
     "README.md"
   ],
