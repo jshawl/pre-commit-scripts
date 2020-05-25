@@ -1,6 +1,6 @@
 {
   "name": "pre-commit-scripts",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Easily run a set of scripts before a git commit",
   "main": "dist/index.js",
   "files": [
@@ -31,7 +31,6 @@
   "author": "Jesse Shawl",
   "license": "GPL-3.0-only",
   "dependencies": {
-    "@jshawl/pre-commit": "0.0.4",
     "ora": "^4.0.4"
   },
   "devDependencies": {
