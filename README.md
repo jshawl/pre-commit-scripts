@@ -1,12 +1,15 @@
-# Pre-Commit Hook
+# Pre-Commit Scripts
 
-This npm package generates a git `pre-commit` hook that runs a set of customizable bash commands.
+This npm package generates a git `pre-commit` hook that runs a set of bash commands.
 
 ## Philosophy
 
 ### No package.json changes
 
-Local commits are a very personal activity. Your own commit guards don't _need_ to be shared with other contributors to your repository.
+Local commits are a very personal activity. Your own commit guards don't _need_ to be shared with other contributors to your repository. To share changes with others:
+
+- add `pre-commit-scripts` as a `devDependency`
+- remove  `.pre-commit-scripts` from `.git/info/exclude`
 
 ### Not npm specific
 
@@ -36,7 +39,7 @@ The general workflow is:
 ## Install
 
 ```
-npm install @jshawl/pre-commit
+npm install pre-commit-scripts
 ```
 
 A post-install script will copy a `pre-commit` executable to `.git/hooks/pre-commit`.

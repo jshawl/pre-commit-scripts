@@ -1,7 +1,7 @@
 {
-  "name": "@jshawl/pre-commit",
+  "name": "pre-commit-scripts",
   "version": "0.1.2",
-  "description": "Pre-commit guards",
+  "description": "Easily run a set of scripts before a git commit",
   "main": "dist/index.js",
   "files": [
     "post-install.sh",
